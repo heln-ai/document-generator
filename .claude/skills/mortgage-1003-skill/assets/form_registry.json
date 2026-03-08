@@ -1,0 +1,43 @@
+{
+  "forms": [
+    {
+      "id": "fannie_mae_official_2021",
+      "label": "Official Fannie Mae / Freddie Mac URLA (2021)",
+      "description": "The actual Fannie Mae Form 1003 / Freddie Mac Form 65, effective 1/2021. 9 pages, 465 fillable AcroForm fields. Indistinguishable from a real lender submission. Best for realistic AI testing.",
+      "file": "assets/fannie_mae_1003_official_2021.pdf",
+      "fields_inventory": "assets/fannie_mae_1003_fields.json",
+      "fill_method": "acroform",
+      "pages": 9,
+      "field_count": 465,
+      "tags": ["official", "fannie_mae", "freddie_mac", "acroform", "2021"],
+      "best_for": "AI extraction testing that needs realistic, lender-quality documents"
+    },
+    {
+      "id": "custom_rendered",
+      "label": "Custom Rendered 1003 (Structured Layout)",
+      "description": "A programmatically generated Form 1003 with a clean, structured layout. All 9 sections present. Easier to read programmatically. Includes a computed ground-truth summary panel not present on the official form.",
+      "file": null,
+      "fields_inventory": null,
+      "fill_method": "reportlab",
+      "pages": "variable",
+      "field_count": "all",
+      "tags": ["custom", "generated", "structured", "ground_truth_panel"],
+      "best_for": "Cases where a clean layout and computed summary panel are needed, or when no official template is available"
+    }
+  ],
+  "default": "fannie_mae_official_2021",
+  "selection_guidance": {
+    "use_official_when": [
+      "Testing AI document classification or extraction realism",
+      "Generating data that must look like real lender submissions",
+      "User mentions 'official form', 'Fannie Mae form', 'real 1003'",
+      "User does not specify — official is the default"
+    ],
+    "use_custom_when": [
+      "User explicitly asks for custom or generated format",
+      "User wants the computed ground-truth summary panel visible in the PDF",
+      "A different official template has been added and selected instead",
+      "User says 'your format' or 'the generated one'"
+    ]
+  }
+}
